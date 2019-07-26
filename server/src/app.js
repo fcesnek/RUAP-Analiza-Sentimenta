@@ -13,7 +13,7 @@ app.use(bodyParser.json())
 app.use(cors())
 
 app.post('/scoreNN', AzureWebModelController.scoreNeuralNetwork)
-app.post('/scoreLR', AzureWebModelController.scoreLogisticRegression)
+app.post('/scoreSVM', AzureWebModelController.scoreSVM)
 app.post('/saveReview', ReviewController.saveReview)
 app.get('/getReviews', ReviewController.getReviews)
 

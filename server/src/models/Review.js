@@ -14,7 +14,7 @@ const reviewSchema = mongoose.Schema({
         neuralNetwork: {
             type: String
         },
-        logisticRegression: {
+        SVM: {
             type: String
         }
     },
@@ -22,7 +22,7 @@ const reviewSchema = mongoose.Schema({
         neuralNetwork: {
             type: Number
         },
-        logisticRegression: {
+        SVM: {
             type: Number
         }
     }

@@ -8,11 +8,11 @@ module.exports = {
         text: req.body.parameters.review,
         trueRating: req.body.parameters.trueRating ? req.body.parameters.trueRating : 'Unknown',
         modelScore: {
-          logisticRegression: req.body.resultLR.label,
+          SVM: req.body.resultSVM.label,
           neuralNetwork: req.body.resultNN.label
         },
         modelProbability: {
-          logisticRegression: req.body.resultLR.probability,
+          SVM: req.body.resultSVM.probability,
           neuralNetwork: req.body.resultNN.probability
         }
       })

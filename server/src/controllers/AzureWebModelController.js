@@ -1,26 +1,26 @@
 const axios = require('axios')
 
-const logisticRegUrl = "https://ussouthcentral.services.azureml.net/workspaces/f59c87eea7034e368a7afe08275a3c4e/services/242b27d1666343c9bff25c9ec569b0d4/execute?api-version=2.0&details=true"
-const neuralNetUrl = "https://ussouthcentral.services.azureml.net/workspaces/f59c87eea7034e368a7afe08275a3c4e/services/b7b816b435144ac4bbba838a68ad03c3/execute?api-version=2.0&details=true"
+const svmUrl = "https://ussouthcentral.services.azureml.net/workspaces/f59c87eea7034e368a7afe08275a3c4e/services/aa1520ee210d46ef8af4ecb1833ab4a8/execute?api-version=2.0&details=true"
+const neuralNetUrl = "https://ussouthcentral.services.azureml.net/workspaces/f59c87eea7034e368a7afe08275a3c4e/services/bebf8a3fa56447928bae444c03801b19/execute?api-version=2.0&details=true"
 
-const logisticRegApiKey = "J4/C/iCv0yVReYq2yQ26qwYy8pXFDr8wsWHMAQD976m6rFJyrEGb8K0Nb/Y5RP3HnwtHTPq3Vz7LS9XZyWEG1Q=="
-const neuralNetApiKey = "ptenULvkfl9gVhqbfDG/mQLne8TJU+ln1R4Cp8zCQhls7Ks54Cn4BgwrlNdBo4XM/JevHbWy0GiDuJPOlIw2gw=="
+const svmApiKey = "KUWnWe2U3+QJYNQqs9d777F15fLjKBFYjjROV/wMCXOjcA0bQjLDAK72IX4TjPsHIeJC3X3Axc13YVAywFv/ug=="
+const neuralNetApiKey = "W4WPdky8AGqNionL3mjfuNW1RHxafZEP4g5bCnpbDmMhpHynLEcRf1Teiy2C8GqZRfp2MBhU2wW7HhOBa8u5PA=="
 
-const configLR = {
-  headers: {'Authorization': "Bearer " + logisticRegApiKey}
+const configSVM = {
+  headers: {'Authorization': "Bearer " + svmApiKey}
 }
 
 const configNN = {
   headers: {'Authorization': "Bearer " + neuralNetApiKey}
 }
 module.exports = {
-  async scoreLogisticRegression (req, res) {
+  async scoreSVM (req, res) {
     try {
       let reqData = {
         Inputs: {
           input1: {
             ColumnNames: [
-              "review"
+              "text"
             ],
             Values: [
               [
@@ -32,15 +32,17 @@ module.exports = {
         GlobalParameters: {}
       }
       let azureResponse = await axios.post(
-        logisticRegUrl,
+        svmUrl,
         reqData,
-        configLR
+        configSVM
       )
       
       let response = {
         label: azureResponse.data.Results.output1.value.Values[0][0],
         probability: azureResponse.data.Results.output1.value.Values[0][1]
       }
+
+      console.log(response)
 
       res.send(response)
     } catch (err) {
@@ -55,7 +57,7 @@ module.exports = {
         Inputs: {
           input1: {
             ColumnNames: [
-              "review"
+              "text"
             ],
             Values: [
               [
@@ -76,6 +78,8 @@ module.exports = {
         label: azureResponse.data.Results.output1.value.Values[0][0],
         probability: azureResponse.data.Results.output1.value.Values[0][1]
       }
+
+      console.log(response)
 
       res.send(response)
     } catch (err) {
