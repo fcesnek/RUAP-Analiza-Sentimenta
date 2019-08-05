@@ -10,6 +10,7 @@
   "dependencies": {
     "axios": "^0.18.1",
     "vue": "^2.5.22",
+    "vue-router": "^3.0.7",
     "vuetify": "^1.3.0"
   },
   "devDependencies": {

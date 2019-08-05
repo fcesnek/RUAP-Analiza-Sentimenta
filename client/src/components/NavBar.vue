@@ -3,9 +3,15 @@
     <v-toolbar-title>DRUG REVIEW SENTIMENT ANALYSIS</v-toolbar-title>
     <v-spacer></v-spacer>
     <v-toolbar-items>
-      <v-btn flat>
-        <v-icon class="mr-2">cloud</v-icon>AZURE MODEL
+      <v-btn flat to="/">
+        EVALUATE
       </v-btn>
+      <v-btn flat to="/history">
+        PAST REVIEWS
+      </v-btn>
+    </v-toolbar-items>
+    <v-spacer></v-spacer>
+    <v-toolbar-items>
       <v-btn
         flat
         href="https://www.kaggle.com/jessicali9530/kuc-hackathon-winter-2018"
@@ -19,10 +25,3 @@
     </v-toolbar-items>
   </v-toolbar>
 </template>
-
-<script>
-export default {}
-</script>
-
-<style>
-</style>

@@ -1,7 +1,7 @@
 <template>
   <v-layout justify-center>
     <v-flex xs12 sm2 md3 class="info-alert">
-      <v-alert :value="!!result.label" v-if="result.label == 'positive'" type="success">
+      <v-alert :value="!!result.label" v-if="result.label == 'positive'" color="#c8e6c9">
         Model: {{ modelName }}
         <br />
         Scored value is {{result.label}}
@@ -9,7 +9,7 @@
         Probability: {{result.probability}}
       </v-alert>
 
-      <v-alert :value="!!result.label" v-else-if="result.label == 'negative'" type="error">
+      <v-alert :value="!!result.label" v-else-if="result.label == 'negative'" color="#ffcdd2">
         Model: {{ modelName }}
         <br />
         Scored value is {{result.label}}
@@ -29,5 +29,8 @@ export default {
 <style scoped>
   .info-alert:last-child {
     margin-bottom: 10px;
+  }
+  div.v-alert {
+    color: black;
   }
 </style>
