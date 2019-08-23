@@ -42,12 +42,10 @@ module.exports = {
         probability: azureResponse.data.Results.output1.value.Values[0][1]
       }
 
-      console.log(response)
-
       res.send(response)
     } catch (err) {
       res.status(500).send({
-        error: `Error while sending data from Azure API.`
+        error: `Error while fetching data from Azure API.`
       })
     }
   },
@@ -78,8 +76,6 @@ module.exports = {
         label: azureResponse.data.Results.output1.value.Values[0][0],
         probability: azureResponse.data.Results.output1.value.Values[0][1]
       }
-
-      console.log(response)
 
       res.send(response)
     } catch (err) {

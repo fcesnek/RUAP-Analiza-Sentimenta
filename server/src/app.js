@@ -5,6 +5,7 @@ const morgan = require('morgan')
 const mongoose = require('mongoose')
 const AzureWebModelController = require('./controllers/AzureWebModelController')
 const ReviewController = require('./controllers/ReviewController')
+const config = require('./config/config')
 
 const app = express()
 
@@ -24,5 +25,5 @@ mongoose.connect('mongodb://localhost:27017/ruap', { useNewUrlParser: true })
 let db = mongoose.connection
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
-app.listen(8888)
-console.log(`Server started on port ${8888}`)
+app.listen(config.port)
+console.log(`Server started on port ${config.port}`)
