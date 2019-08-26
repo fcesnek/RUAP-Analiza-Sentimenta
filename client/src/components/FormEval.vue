@@ -31,6 +31,10 @@
             <br />Only the review text itself is evaluated by the model.
           </span>
         </v-tooltip>
+        <v-checkbox
+          v-model="saveToDb"
+          label="Save to database"
+        ></v-checkbox>
       </v-flex>
     </v-layout>
   </v-container>
@@ -56,7 +60,8 @@ export default {
       resultNN: {
         label: null,
         probability: null
-      }
+      },
+      saveToDb: false
     }
   },
   methods: {
@@ -73,7 +78,9 @@ export default {
         )).data
 
         // save to the database
-        this.saveReview()
+        if (this.saveToDb) {
+          this.saveReview()
+        }
 
         this.$emit('dataScored', {
           resultNN: this.resultNN,
